@@ -7,7 +7,7 @@ import java.awt.Point;
  */
 public class Best {
 
-  public Point point;
+  	public Point point;
 	public Integer score = 0;
 	public Integer level = 0;
 	public Integer sum = 0;
