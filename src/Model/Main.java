@@ -6,7 +6,9 @@ import View.Play;
 public class Main {
 
   	/**
-	 * @param args
+	 * Illustrating Artificial Intelligence and Software Engineering Concepts through Othello
+	 * Main Class
+	 * @author jompon
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
