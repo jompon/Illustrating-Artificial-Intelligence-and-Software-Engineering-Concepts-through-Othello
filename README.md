@@ -10,7 +10,7 @@ Minimum requirements :
 
 Java 7
 
-วิธีใช้งาน :
+Instruction :
 
 1. Open a program and you can play.
 
