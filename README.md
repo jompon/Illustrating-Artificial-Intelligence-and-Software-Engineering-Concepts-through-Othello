@@ -14,7 +14,7 @@ Java 7
 
 Instruction:
 
-You need to put an image to path src/Support/
+You need to put an image to path src/Support/ before run.
 
 You can download on http://www.mediafire.com/?1yvhzkybpot0qja
 
