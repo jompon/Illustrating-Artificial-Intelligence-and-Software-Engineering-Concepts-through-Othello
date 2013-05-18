@@ -3,7 +3,6 @@ package View;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,7 +23,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
-import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
 import Model.Mark;
@@ -46,7 +44,7 @@ import Support.Format;
  */
 public class Play extends JFrame implements Runnable{
 
-  private Othello othello;
+	private Othello othello;
 	private OthelloButton currentTurn;					// show a small piece for to know now turn is who turn 
 	private OthelloButton[][] button;					// table of the board
 	private Player firstPlayer;
@@ -89,7 +87,6 @@ public class Play extends JFrame implements Runnable{
 		JMenuItem newGame = new JMenuItem("New");
 		JMenuItem exit = new JMenuItem("Exit");
 		JMenuItem about = new JMenuItem("About");
-		JMenuItem credits = new JMenuItem("Credits");
 		JMenu mark = new JMenu("Mark");
 		JCheckBoxMenuItem markPlace = new JCheckBoxMenuItem("Place");
 		JCheckBoxMenuItem markFlip = new JCheckBoxMenuItem("Flip");
@@ -100,21 +97,18 @@ public class Play extends JFrame implements Runnable{
 		file.add(new JSeparator());
 		file.add(exit);
 		help.add(about);
-		help.add(credits);
 		bar.add(file);
 		bar.add(help);
 		newGame.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.getKeyText(KeyEvent.VK_F2)) );
 		markPlace.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK) );
 		markFlip.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_MASK) );
 		about.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.ALT_MASK));
-		credits.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.ALT_MASK));
 		exit.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK) );
 		newGame.addActionListener(new newAction());
 		markPlace.addActionListener(new menuAction(this));
 		markFlip.addActionListener(new menuAction(this));
 		exit.addActionListener(new menuAction(this));
 		about.addActionListener(new menuAction(this));
-		credits.addActionListener(new CreditsListener());
 		bar.setBounds(0, 0, size*12+1, size/2);
 		this.setBounds(200, 150, size*10+7, size*10+29+bar.getHeight());
 		page = new Container();
@@ -399,28 +393,6 @@ public class Play extends JFrame implements Runnable{
 			if( black.isSelected() )			setPlayer("Human", "Computer", level);
 			else if( white.isSelected() )		setPlayer("Computer", "Human", level);
 			setComponents(2);
-		}
-	}
-	
-	class CreditsListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Credits: "+arg0.getActionCommand());
-			JFrame frame = new JFrame("Credits Dialog");
-			frame.setBounds(300, 300, 636, 80);
-			frame.setResizable(false);
-			Image img = Toolkit.getDefaultToolkit().getImage(format.getIcon("hamataro.gif"));
-			frame.setIconImage(img);
-			JTextArea area = new JTextArea("Area");
-			area.setBounds(0, 0, frame.getWidth(), frame.getHeight());
-			area.setFont(new Font(Font.SANS_SERIF,Font.BOLD,18));
-			area.setText(format.SpaceBar(2)+"Create by: Snooker\n"+format.SpaceBar(2)+"Degrees:   Software & Knowledge Engineering at Kasetsart University");
-			area.setLineWrap(true);
-			area.setFocusable(false);
-			area.setBackground(null);
-			frame.add(area);
-			frame.setVisible(true);
 		}
 	}
 	
