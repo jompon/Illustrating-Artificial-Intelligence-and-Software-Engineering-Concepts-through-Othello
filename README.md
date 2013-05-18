@@ -6,11 +6,18 @@ Objective :
 
 This application for use intruction media to Artificial Intelligance subject with Minimax theory by Othello game.
 
+
 Minimum requirements :
 
 Java 7
 
-Instruction :
+
+Instruction:
+
+You need to put an image on project.
+
+
+Instruction Play:
 
 1. Open a program and you can play.
 
