@@ -11,13 +11,13 @@ import Model.OthelloButton;
 
 public class Computer extends Player {
 
-  private MiniMax computer;
+	private MiniMax computer;
 	private Point p;
 	public Computer(OthelloButton[][] button, Othello othello, int level) 
 	{
 		super(button, othello);
 		computer = new MiniMax(othello, level);
-		setView(this);
+		resetView( );
 		this.noPlayer = ++numPlayer;
 		this.ID = 0;
 	}
@@ -88,6 +88,13 @@ public class Computer extends Player {
 		view.run();
 	}
 
+	public void resetView( )
+	{
+		if( view != null )		view.setVisible(false);
+		view = null;
+		setView(this);
+	}
+	
 	public void releaseView( )
 	{
 		if( view == null )		return;
