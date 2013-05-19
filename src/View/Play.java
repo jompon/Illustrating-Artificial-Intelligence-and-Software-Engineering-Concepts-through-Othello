@@ -485,12 +485,12 @@ public class Play extends JFrame implements Runnable{
 			if( firstPlayer instanceof Computer )
 			{
 				Computer com = (Computer)firstPlayer;
-				com.releaseView();
+				com.resetView();
 			}
 			else if( secondPlayer instanceof Computer )
 			{
 				Computer com = (Computer)secondPlayer;
-				com.releaseView();
+				com.resetView();
 			}
 			currentTurn.setPiece('X');
 			currentTurn.repaint();
