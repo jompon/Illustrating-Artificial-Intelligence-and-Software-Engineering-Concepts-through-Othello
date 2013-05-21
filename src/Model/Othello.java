@@ -1,11 +1,13 @@
 package Model;
 
+import javax.swing.JOptionPane;
+
 /**
  * Othello is algorithm controller for control the rule on this game
  * This is singleton class
  */
 public class Othello {
-  
+	
 	private char piece;						// current own piece
 	private char pieceEn;					// current enemy piece
 	private byte blackPiece;				// number of black piece
@@ -14,7 +16,7 @@ public class Othello {
 	private boolean isGameOver;				// indicate that game over
 	private int turn;						// turn of ordinal number of player
 	private boolean wait;					// indicate to know that it is still turning
-	private int numTurn = 1;				// number of all turn
+	private int numTurn;					// current turn
 	private OrdinalPlayer firstPlayer;		// first player
 	private OrdinalPlayer secondPlayer;		// second player
 	private OrdinalPlayer currentPlayer;	// current player is indicating now turn is who turn player
@@ -96,10 +98,6 @@ public class Othello {
 	{
 		return whitePiece;
 	}
-	public byte getNumPiece( )
-	{
-		return (byte) (blackPiece + whitePiece);
-	}
 	
 	public void addPiece(char Piece)
 	{
@@ -177,6 +175,7 @@ public class Othello {
 	}
 	public void GameOver( )
 	{
+		JOptionPane.showMessageDialog(null, showWin());
 		isGameOver = true;
 	}
 }
