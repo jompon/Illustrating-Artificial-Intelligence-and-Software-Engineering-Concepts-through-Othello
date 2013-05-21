@@ -12,7 +12,6 @@ import Model.OthelloButton;
 public class Computer extends Player {
 
 	private MiniMax computer;
-	private Point p;
 	public Computer(OthelloButton[][] button, Othello othello, int level) 
 	{
 		super(button, othello);
@@ -26,10 +25,8 @@ public class Computer extends Player {
 	{
 		if( !othello.isTiming() && !othello.isGameOver() ){
 			othello.setTiming(true);
-			computer.resetListNode();
-			computer.setTable(othello.getTable());
-			computer.Think( );
-			p = computer.Place();
+			computer.clearList();
+			Point p = computer.Place(othello.getTable());
 			setPoint(p.x,p.y);
 			button[x][y].setPiece(othello.getPiece());
 			button[x][y].setMarkPlace(false);
@@ -61,12 +58,6 @@ public class Computer extends Player {
 			System.out.println("Com["+x+","+y+"]");
 			nextTurn();
 		}
-	}
-	
-	public void setPoint(int x,int y)
-	{
-		this.x = x;
-		this.y = y;
 	}
 	
 	public List<Best> getBest()
