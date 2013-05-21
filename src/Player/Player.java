@@ -9,18 +9,18 @@ import View.ViewAI;
 
 public abstract class Player implements IPlayer{
 
-  protected static int x = 0;
-	protected static int y = 0;
-	protected static int lastX = 0;
-	protected static int lastY = 0;
+	protected int x = 0;
+	protected int y = 0;
+	protected int lastX = 0;
+	protected int lastY = 0;
 	private int DirectX = 0;
 	private int DirectY = 0;
 	protected int numEat = 0;
 	protected int noPlayer;
 	protected int ID;
-	protected static int numPlayer = 0;
 	protected Othello othello;
 	protected OthelloButton[][] button;
+	protected static int numPlayer = 0;
 	protected static ViewAI view;
 	protected Export export;
 	public Player(OthelloButton[][] button, Othello othello)
@@ -51,7 +51,8 @@ public abstract class Player implements IPlayer{
 				Mark(i,j,"Put");
 			}
 		}
-		if( othello.getNumPiece() == Math.pow(button.length, 2) )			gameOver();
+		if( othello.getNumBlackPiece() + othello.getNumWhitePiece() == Math.pow(button.length, 2) )
+			othello.GameOver();
 		else if( !othello.isEat() )											passTurn();
 	}
 	
@@ -62,11 +63,6 @@ public abstract class Player implements IPlayer{
 		if( othello.getIdPlayer() == 0 )									execute( );
 	}
 	
-	private void gameOver()
-	{
-		JOptionPane.showMessageDialog(null, othello.showWin());
-		othello.GameOver();
-	}
 	private void Eat( int x , int y , int a , int b )
 	{
 		int i = 0,j = 0;
@@ -152,6 +148,12 @@ public abstract class Player implements IPlayer{
 	public void Mark(int X, int Y, String command) 
 	{
 		if( !button[X][Y].isPlaced() )				checkAroundPiece( X , Y , command );
+	}
+	
+	public void setPoint(int x,int y)
+	{
+		this.x = x;
+		this.y = y;
 	}
 	
 	protected void viewUpdate( )
