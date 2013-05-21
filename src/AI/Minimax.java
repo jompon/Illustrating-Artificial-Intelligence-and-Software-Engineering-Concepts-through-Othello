@@ -10,32 +10,19 @@ import Model.Othello;
 /**
  * MiniMax is the one way of A.I. process to play a game
  */
-public class MiniMax{
+public class MiniMax extends AIAbstract{
 
-  private Othello othello;
-	private char[][] button;
 	private List<List<Best>> listNodeBest;
 	private List<Best> listBest;
 	private Best best;
-	private int difficulty = 3;
 	public MiniMax(Othello othello, int difficulty) 
 	{
-		this.othello = othello;
+		super(othello, difficulty);
 		listNodeBest = new ArrayList<List<Best>>();
 		listBest = new ArrayList<Best>();
-		this.difficulty = difficulty;
-	}
-
-	public void setCapacity(int difficulty)
-	{
-		this.difficulty = difficulty;
-	}
-	public int getCapacity( )
-	{
-		return difficulty;
 	}
 	
-	public void resetListNode( )
+	public void clearList( )
 	{
 		for(int i=0;i<listNodeBest.size();i++)
 		{
@@ -50,7 +37,7 @@ public class MiniMax{
 		return listBest;
 	}
 	
-	public Best miniMax(boolean computer, char[][] button, int count, char my, char opponent, int sc)
+	private Best miniMax(boolean computer, char[][] button, int count, char my, char opponent, int sc)
 	{
 		Best best = new Best();
 		Best reply = new Best();
@@ -165,7 +152,7 @@ public class MiniMax{
 		return best;
 	}
 	
-	public void findListBest(Best root, int count, int init, int p)
+	private void findListBest(Best root, int count, int init, int p)
 	{
 		if( count > difficulty )		return;
 		int sum = 0;
@@ -303,15 +290,12 @@ public class MiniMax{
 		}
 	}
 	
-	public void Think( ) 
+	@Override
+	public Point Place(char[][] button) 
 	{
-		best = miniMax(true, this.button, 1, othello.getPiece(), othello.getOpponentPiece(), 0);
+		best = miniMax(true, button, 1, othello.getPiece(), othello.getOpponentPiece(), 0);
 		//System.out.println("Find Best: Score = "+best.score+" Sum = "+best.sum+ " Point = "+best.point+" Level = "+best.level);
 		findListBest(best, 1, 0, 0);
-	}
-
-	public Point Place() {
-		// TODO Auto-generated method stub
 		/*for(int i=0;i<listNodeBest.size();i++){
 			for(int j=0;j<listNodeBest.get(i).size();j++){
 				System.out.println("LIST["+i+","+j+"]: Score = "+listNodeBest.get(i).get(j).score+" Sum = "+listNodeBest.get(i).get(j).sum+" Point = "+listNodeBest.get(i).get(j).point+" Level = "+listNodeBest.get(i).get(j).level);
@@ -322,10 +306,5 @@ public class MiniMax{
 			System.out.println("LIST["+i+"]: Score = "+listBest.get(i).score+" Sum = "+listBest.get(i).sum+" Point = "+listBest.get(i).point+" Level = "+listBest.get(i).level);
 		}*/
 		return best.point;
-	}
-
-	public void setTable(char[][] button) 
-	{
-		this.button = button;
 	}
 }
