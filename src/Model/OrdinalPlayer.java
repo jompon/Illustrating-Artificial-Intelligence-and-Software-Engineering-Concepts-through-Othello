@@ -5,7 +5,7 @@ package Model;
  */
 public class OrdinalPlayer {
 
-  private static int number = 0;		// number of player
+	private static int number = 0;		// number of player
 	private int ordinalNumber;			// ordinal of player
 	private char piece;					// color of player
 	private String typePlayer = "";		// type of player
@@ -14,7 +14,7 @@ public class OrdinalPlayer {
 	{
 		this.piece = piece;
 		this.typePlayer = typePlayer;
-		setOrdinalNumber();
+		ordinalNumber = ++number;
 		setIdPlayer();
 	}
 	public static void newGame( )
@@ -52,10 +52,6 @@ public class OrdinalPlayer {
 	public int getOrdinalNumber()
 	{
 		return ordinalNumber;
-	}
-	private void setOrdinalNumber( )
-	{
-		ordinalNumber = ++number;
 	}
 
 	public String toString( )
