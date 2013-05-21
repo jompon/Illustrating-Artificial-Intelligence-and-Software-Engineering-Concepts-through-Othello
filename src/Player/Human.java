@@ -7,7 +7,7 @@ import Model.OthelloButton;
 
 public class Human extends Player{
 
-  public Human(OthelloButton[][] button,Othello othello) 
+	public Human(OthelloButton[][] button,Othello othello) 
 	{
 		super(button,othello);
 		this.noPlayer = ++numPlayer;
@@ -42,12 +42,6 @@ public class Human extends Player{
 			othello.setTiming(false);
 			nextTurn();
 		}
-	}
-	
-	public void setPoint(int x,int y)
-	{
-		this.x = x;
-		this.y = y;
 	}
 	
 	public String toString()
