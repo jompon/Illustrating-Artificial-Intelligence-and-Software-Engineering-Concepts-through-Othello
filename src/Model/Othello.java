@@ -39,6 +39,7 @@ public class Othello {
 	}
 	public void reset( )
 	{	
+		currentPlayer = firstPlayer;
 		isGameOver = false;
 		wait = false;
 		turn = 1;
