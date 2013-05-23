@@ -459,6 +459,7 @@ public class Play extends JFrame implements Runnable{
 			export.reset();
 			othello.reset( );
 			othello.newGame( );
+			Player.newGame();
 			if( firstPlayer instanceof Computer )
 			{
 				Computer com = (Computer)firstPlayer;
@@ -576,16 +577,16 @@ public class Play extends JFrame implements Runnable{
 		{
 			if( othello.isTiming() )								return;
 			if( othello.getIdPlayer() == 1 ){
-				if( othello.getTurn() == 1 )						firstPlayer.Mark(x,y,"Take");
-				else if( othello.getTurn() == 2 )					secondPlayer.Mark(x,y,"Take");
+				if( othello.getTurn() == 1 )						firstPlayer.Mark(x, y, "Flip");
+				else if( othello.getTurn() == 2 )					secondPlayer.Mark(x, y, "Flip");
 			}
 		}
 		public void mouseExited(MouseEvent e)
 		{
 			if( othello.isTiming() )								return;
 			if( othello.getIdPlayer() == 1 ){
-				if( othello.getTurn() == 1 )						firstPlayer.Mark(x,y,"Take");
-				else if( othello.getTurn() == 2 )					secondPlayer.Mark(x,y,"Take");
+				if( othello.getTurn() == 1 )						firstPlayer.Mark(x, y, "Flip");
+				else if( othello.getTurn() == 2 )					secondPlayer.Mark(x, y, "Flip");
 			}
 		}
 		public void mouseClicked(MouseEvent e) { 
