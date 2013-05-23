@@ -30,6 +30,11 @@ public abstract class Player implements IPlayer{
 		export = Export.getInstance(othello);
 	}
 	
+	public static void newGame()
+	{
+		numPlayer = 0;
+	}
+	
 	protected void setView(Computer computer)
 	{
 		if( view == null )
@@ -48,7 +53,7 @@ public abstract class Player implements IPlayer{
 					button[i][j].setMarkPlace(false);
 					button[i][j].repaint();
 				}
-				Mark(i,j,"Put");
+				Mark(i,j,"Place");
 			}
 		}
 		if( othello.getNumBlackPiece() + othello.getNumWhitePiece() == Math.pow(button.length, 2) )
@@ -84,7 +89,7 @@ public abstract class Player implements IPlayer{
 			}
 		}
 	}
-	private void setTake( int x , int y , int a , int b )
+	private void setFlip( int x , int y , int a , int b )
 	{
 		int i = 0,j = 0;
 		for(int p=0;p<numEat;p++){
@@ -95,7 +100,7 @@ public abstract class Player implements IPlayer{
 			button[x+i][y+j].repaint();
 		}
 	}
-	private void setMark( int x, int y )
+	private void setPlace( int x, int y )
 	{
 		if( !othello.isEat() )						othello.setEat(true);// Show that this turn can eat
 		button[x][y].setMarkPlace(true);
@@ -133,8 +138,8 @@ public abstract class Player implements IPlayer{
 						if( isTakePiece( x , y , i , j ) )
 						{
 							if( command.equalsIgnoreCase("Eat") )			Eat( x , y , i, j );
-							else if( command.equalsIgnoreCase("Take") )		setTake(x, y, i, j);
-							else if( command.equalsIgnoreCase("Put") )		setMark(x, y);
+							else if( command.equalsIgnoreCase("Flip") )		setFlip(x, y, i, j);
+							else if( command.equalsIgnoreCase("Place") )	setPlace(x, y);
 						}
 					}
 				}
